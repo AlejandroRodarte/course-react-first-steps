@@ -19,12 +19,28 @@ class App extends Component {
         name: 'Stephanie',
         age: 26
       }
-    ]
+    ],
+    otherState: 'someOtherValue'
   };
 
-  switchNameHandler = () => {
-    console.log('clicked!');
-  };
+  switchNameHandler = () => this.setState((prevState, props) => (
+    {
+      persons: [
+        {
+          name: 'Maximilian',
+          age: 27
+        },
+        {
+          name: 'Maru',
+          age: 31
+        },
+        {
+          name: 'Steph',
+          age: 30
+        }
+      ]
+    }
+  ));
 
   render() {
 
