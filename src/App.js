@@ -1,79 +1,74 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 import Person from './Person/Person';
 
-class App extends Component {
+const App = (props) => {
 
-  state = {
-    persons: [
-      {
-        name: 'Max',
-        age: 28
-      },
-      {
-        name: 'Manu',
-        age: 29
-      },
-      {
-        name: 'Stephanie',
-        age: 26
-      }
-    ],
-    otherState: 'someOtherValue'
-  };
-
-  switchNameHandler = () => this.setState((prevState, props) => (
+  const [personsState, setPersonsState] = useState(() => (
     {
       persons: [
         {
-          name: 'Maximilian',
-          age: 27
+          name: 'Max',
+          age: 28
         },
         {
-          name: 'Maru',
-          age: 31
+          name: 'Manu',
+          age: 29
         },
         {
-          name: 'Steph',
-          age: 30
+          name: 'Stephanie',
+          age: 26
         }
       ]
     }
   ));
 
-  render() {
+  const [someOtherState, setSomeOtherState] = useState(() => 'someOtherValue');
 
-    return (
+  const switchNameHandler = () => setPersonsState({
+    persons: [
+      {
+        name: 'Maximilian',
+        age: 27
+      },
+      {
+        name: 'Maru',
+        age: 31
+      },
+      {
+        name: 'Steph',
+        age: 30
+      }
+    ]
+  });
 
-      <div className="App">
+  return (
+    <div className="App">
 
-        <button onClick={ this.switchNameHandler }>
-          Switch name
-        </button>
+      <button onClick={ switchNameHandler }>
+        Switch name
+      </button>
 
-        <Person 
-          name={ this.state.persons[0].name }
-          age={ this.state.persons[0].age }
-        />
+      <Person 
+        name={ personsState.persons[0].name }
+        age={ personsState.persons[0].age }
+      />
 
-        <Person 
-          name={ this.state.persons[1].name }
-          age={ this.state.persons[1].age }
-        />
+      <Person 
+        name={ personsState.persons[1].name }
+        age={ personsState.persons[1].age }
+      />
 
-        <Person 
-          name={ this.state.persons[2].name }
-          age={ this.state.persons[2].age }
-        >
-          My hobby is swimming
-        </Person>
+      <Person 
+        name={ personsState.persons[2].name }
+        age={ personsState.persons[2].age }
+      >
+        My hobby is swimming
+      </Person>
 
-      </div>
-
-    );
-
-  }
+    </div>
+  );
 
 }
 
