@@ -20,7 +20,8 @@ class App extends Component {
         age: 26
       }
     ],
-    otherState: 'someOtherValue'
+    otherState: 'someOtherValue',
+    showPersons: true
   };
 
   switchNameHandler = (newName) => this.setState((prevState, props) => (
@@ -67,6 +68,8 @@ class App extends Component {
     
   };
 
+  togglePersonsHandler = () => this.setState((prevState, props) => ({ showPersons: !prevState.showPersons }))
+
   render() {
 
     const style = {
@@ -83,29 +86,39 @@ class App extends Component {
 
         <button 
           style={ style }
-          onClick={ () => this.switchNameHandler('Maximilian') }
+          onClick={ this.togglePersonsHandler }
         >
-          Switch name
+          Toggle view
         </button>
 
-        <Person 
-          name={ this.state.persons[0].name }
-          age={ this.state.persons[0].age }
-        />
+        {
 
-        <Person 
-          name={ this.state.persons[1].name }
-          age={ this.state.persons[1].age }
-          click={ this.switchNameHandler.bind(this, 'Maxy!') }
-          changed={ this.namedChangedHandler }
-        />
+          this.state.showPersons && (
+            <div>
 
-        <Person 
-          name={ this.state.persons[2].name }
-          age={ this.state.persons[2].age }
-        >
-          My hobby is swimming
-        </Person>
+              <Person 
+                name={ this.state.persons[0].name }
+                age={ this.state.persons[0].age }
+              />
+
+              <Person 
+                name={ this.state.persons[1].name }
+                age={ this.state.persons[1].age }
+                click={ this.switchNameHandler.bind(this, 'Maxy!') }
+                changed={ this.namedChangedHandler }
+              />
+
+              <Person 
+                name={ this.state.persons[2].name }
+                age={ this.state.persons[2].age }
+              >
+                My hobby is swimming
+              </Person>
+
+            </div>
+          )
+
+        }
 
       </div>
 
