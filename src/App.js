@@ -24,24 +24,9 @@ class App extends Component {
     showPersons: true
   };
 
-  switchNameHandler = (newName) => this.setState((prevState, props) => (
-    {
-      persons: [
-        {
-          name: newName,
-          age: 27
-        },
-        {
-          name: 'Maru',
-          age: 31
-        },
-        {
-          name: 'Steph',
-          age: 30
-        }
-      ]
-    }
-  ));
+  deletePersonHandler = (name) => this.setState((prevState, props) => ({
+    persons: prevState.persons.filter((person) => person.name !== name)
+  }));
 
   namedChangedHandler = (e) => {
 
@@ -94,6 +79,7 @@ class App extends Component {
                   key={ name }
                   name={ name }
                   age={ age }
+                  click={ () => this.deletePersonHandler(name) }
                 />
             )
           }
