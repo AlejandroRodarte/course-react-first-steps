@@ -20,7 +20,19 @@ function App() {
         >
           Learn React
         </a>
-        <Person />
+
+        <Person 
+          name="Max"
+          age="28"
+        />
+
+        <Person 
+          name="Stephanie"
+          age="26"
+        >
+          My hobby is swimming
+        </Person>
+        
       </header>
     </div>
   );
