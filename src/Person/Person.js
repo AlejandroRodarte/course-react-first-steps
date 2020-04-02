@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Person = ({ name, age, children }) => (
+const Person = ({ name, age, children, click }) => (
     <div>
-        <p>
+        <p onClick={ click }>
             I'm { name } and I am { age } years old!
         </p>
         <p>
