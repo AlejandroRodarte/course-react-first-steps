@@ -31,31 +31,19 @@ class App extends Component {
     persons: prevState.persons.filter((person) => person.name !== name)
   }));
 
-  namedChangedHandler = (e) => {
+  namedChangedHandler = (e, id) => {
 
     const newName = e.target.value;
 
-    this.setState((prevState, props) => (
-      {
-        persons: [
-          {
-            id: 1,
-            name: 'Max',
-            age: 27
-          },
-          {
-            id: 2,
-            name: newName,
-            age: 31
-          },
-          {
-            id: 3,
-            name: 'Steph',
-            age: 30
-          }
-        ]
-      }
-    ));
+    const personIndex = this.state.persons.findIndex((person) => person.id === id);
+    const person = { ...this.state.persons[personIndex] };
+
+    person.name = newName;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState((prevState, props) => ({ persons }));
     
   };
 
@@ -86,6 +74,7 @@ class App extends Component {
                   name={ name }
                   age={ age }
                   click={ () => this.deletePersonHandler(name) }
+                  changed={ (e) => this.namedChangedHandler(e, id) }
                 />
             )
           }
