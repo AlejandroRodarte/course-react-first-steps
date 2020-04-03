@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import classes from './Person.module.css';
+import withClass from '../../../hoc/withClass';
 
 class Person extends Component {
 
@@ -14,11 +15,11 @@ class Person extends Component {
 
                 <p onClick={ this.props.click } key="1">
                     I'm { this.props.name } and I am { this.props.age } years old!
-                </p>,
+                </p>
         
                 <p key="2">
                     { this.props.children }
-                </p>,
+                </p>
         
                 <input
                     key="3"
@@ -35,4 +36,4 @@ class Person extends Component {
 
 }
 
-export default Person;
+export default withClass(Person, classes.Person);
