@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import classes from './App.module.css';
 
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass';
 
 class App extends Component {
 
@@ -98,7 +98,7 @@ class App extends Component {
 
     return (
 
-      <WithClass classes={ classes.App }>
+      <Fragment>
 
         <button onClick={ () => this.setState(() => ({ showCockpit: false })) }>
           Remove cockpit
@@ -116,7 +116,7 @@ class App extends Component {
 
         { persons }
 
-      </WithClass>
+      </Fragment>
 
     );
 
@@ -124,4 +124,4 @@ class App extends Component {
 
 }
 
-export default App;
+export default withClass(App, classes.App);
