@@ -12,7 +12,21 @@ const Cockpit = ({ length, showPersons, click, title }) => {
             alert('Saved data to the cloud');
         }, 1000);
 
-    }, [length]);
+        return () => {
+            console.log('[Cockpit.js] cleanup work in useEffect');
+        };
+
+    }, []);
+
+    useEffect(() => {
+        
+        console.log('[Cockpit.js] 2nd useEffect');
+
+        return () => {
+            console.log('[Cockpit.js] cleanup work in 2nd useEffect');
+        };
+
+    });
 
     const paragraphCssClasses = [];
 
