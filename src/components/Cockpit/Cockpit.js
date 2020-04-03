@@ -66,4 +66,4 @@ const Cockpit = ({ length, showPersons, click, title }) => {
 
 }
 
-export default Cockpit;
+export default React.memo(Cockpit);
