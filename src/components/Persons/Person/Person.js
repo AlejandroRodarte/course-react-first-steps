@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Auxiliary from '../../../hoc/Auxiliary';
 import classes from './Person.module.css';
 
 class Person extends Component {
@@ -9,23 +10,26 @@ class Person extends Component {
         console.log('[Person.js] render');
 
         return (
-            <div className={ classes.Person }>
 
-                <p onClick={ this.props.click }>
+            <Auxiliary>
+
+                <p onClick={ this.props.click } key="1">
                     I'm { this.props.name } and I am { this.props.age } years old!
-                </p>
+                </p>,
         
-                <p>
+                <p key="2">
                     { this.props.children }
-                </p>
+                </p>,
         
-                <input 
+                <input
+                    key="3"
                     type="text"
                     onChange={ this.props.changed }
                     value={ this.props.name }
                 />
-        
-            </div>
+
+            </Auxiliary>
+
         );
 
     }
