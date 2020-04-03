@@ -87,9 +87,27 @@ class App extends Component {
 
     }
 
+    const paragraphCssClasses = [];
+
+    if (this.state.persons.length <= 2) {
+      paragraphCssClasses.push('red');
+    }
+
+    if (this.state.persons.length <= 1) {
+      paragraphCssClasses.push('bold');
+    }
+
     return (
 
       <div className="App">
+
+        <h1>
+          Hi, I am a React App
+        </h1>
+
+        <p className={ paragraphCssClasses.join(' ') }>
+          This is really working
+        </p>
 
         <button 
           style={ style }
