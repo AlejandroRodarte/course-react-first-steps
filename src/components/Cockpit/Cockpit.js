@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './Cockpit.module.css';
 
-const Cockpit = ({ length, showPersons, click }) => {
+const Cockpit = ({ length, showPersons, click, title }) => {
 
     const paragraphCssClasses = [];
 
@@ -23,7 +23,7 @@ const Cockpit = ({ length, showPersons, click }) => {
     return (
         <div className={ classes.Cockpit }>
             <h1>
-                Hi, I am a React App
+                { title }
             </h1>
     
             <p className={ paragraphCssClasses.join(' ') }>
