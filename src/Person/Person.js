@@ -20,13 +20,6 @@ const StyledDiv = styled.div`
 
 const Person = ({ name, age, children, click, changed }) => {
 
-    const style = {
-        '@media (min-width: 500px)': {
-            width: '450px',
-            color: 'red'
-        }
-    };
-
     return (
         <StyledDiv>
 

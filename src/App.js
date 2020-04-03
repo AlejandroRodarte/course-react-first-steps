@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import './App.css';
 
 import Person from './Person/Person';
+
+const StyledButton = styled.button`
+
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lightgreen;
+    color: black;
+  }
+
+`;
 
 class App extends Component {
 
@@ -119,12 +136,9 @@ class App extends Component {
           This is really working
         </p>
 
-        <button 
-          style={ style }
-          onClick={ this.togglePersonsHandler }
-        >
+        <StyledButton onClick={ this.togglePersonsHandler }>
           Toggle view
-        </button>
+        </StyledButton>
 
         { persons }
 
