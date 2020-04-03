@@ -6,6 +6,8 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
 
+import AuthContext from '../context/auth-context';
+
 class App extends Component {
 
   constructor(props) {
@@ -109,18 +111,21 @@ class App extends Component {
           Remove cockpit
         </button>
 
-        {
-          this.state.showCockpit && 
-          <Cockpit
-            title={ this.props.title }
-            showPersons={ this.state.showPersons }
-            length={ this.state.persons.length }
-            click={ this.togglePersonsHandler }
-            login={ this.loginHandler }
-          />
-        }
+        <AuthContext.Provider value={ { authenticated: this.state.authenticated, login: this.loginHandler } }>
 
-        { persons }
+          {
+            this.state.showCockpit && 
+            <Cockpit
+              title={ this.props.title }
+              showPersons={ this.state.showPersons }
+              length={ this.state.persons.length }
+              click={ this.togglePersonsHandler }
+            />
+          }
+
+          { persons }
+
+        </AuthContext.Provider>
 
       </Fragment>
 
