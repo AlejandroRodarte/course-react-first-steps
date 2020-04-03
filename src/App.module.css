@@ -1,0 +1,40 @@
+/* to apply this style, use classes.App */
+.App {
+  text-align: center;
+}
+
+/* to apply this style, use classes.red */
+.red {
+  color: red;
+}
+
+/* to apply this style, use classes.bold */
+.bold {
+  font-weight: bold;
+}
+
+/* this style targets all buttons inside an element that uses classes.App */
+.App button {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* target hover of buttons inside elements that have applies classes.App style */
+.App button:hover {
+  background-color: lightgreen;
+  color: black;
+}
+
+/* target buttons that have the classes.Red class inside an element that has the classes.App style */
+.App button.Red {
+  background-color: red;
+}
+
+/* target hovered buttons that have the classes.Red class inside an element that has the classes.App style */
+.App button.Red:hover {
+  background-color: salmon;
+}

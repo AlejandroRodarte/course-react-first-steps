@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './App.css';
+import classes from './App.module.css';
 
 import Person from './Person/Person';
 
@@ -52,29 +52,11 @@ class App extends Component {
 
   render() {
 
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    };
+    let buttonClass = '';
 
     let persons = null;
     
     if (this.state.showPersons) {
-
-      style.backgroundColor = 'red';
-
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      };
 
       persons = (
         <div>
@@ -95,21 +77,23 @@ class App extends Component {
         </div>
       );
 
+      buttonClass = classes.Red;
+
     }
 
     const paragraphCssClasses = [];
 
     if (this.state.persons.length <= 2) {
-      paragraphCssClasses.push('red');
+      paragraphCssClasses.push(classes.red);
     }
 
     if (this.state.persons.length <= 1) {
-      paragraphCssClasses.push('bold');
+      paragraphCssClasses.push(classes.bold);
     }
 
     return (
 
-      <div className="App">
+      <div className={ classes.App }>
 
         <h1>
           Hi, I am a React App
@@ -120,7 +104,7 @@ class App extends Component {
         </p>
 
         <button
-          className="button" 
+          className={ buttonClass } 
           onClick={ this.togglePersonsHandler }
         >
           Toggle view
