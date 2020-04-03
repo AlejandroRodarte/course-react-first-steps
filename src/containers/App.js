@@ -34,7 +34,8 @@ class App extends Component {
     otherState: 'someOtherValue',
     showPersons: true,
     showCockpit: true,
-    counter: 0
+    counter: 0,
+    authenticated: false
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -75,7 +76,9 @@ class App extends Component {
     
   };
 
-  togglePersonsHandler = () => this.setState((prevState, props) => ({ showPersons: !prevState.showPersons }))
+  togglePersonsHandler = () => this.setState((prevState, props) => ({ showPersons: !prevState.showPersons }));
+
+  loginHandler = () => this.setState(() => ({ authenticated: true }));
 
   render() {
 
@@ -91,6 +94,7 @@ class App extends Component {
             persons={ this.state.persons }
             click={ this.deletePersonHandler }
             changed={ this.namedChangedHandler }
+            isAuthenticated={ this.state.authenticated }
           />
         </div>
       );
@@ -112,6 +116,7 @@ class App extends Component {
             showPersons={ this.state.showPersons }
             length={ this.state.persons.length }
             click={ this.togglePersonsHandler }
+            login={ this.loginHandler }
           />
         }
 
