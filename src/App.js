@@ -1,101 +1,53 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Person from './Person/Person';
+import ValidationComponent from './ValidationComponent/ValidationComponent';
+import CharComponent from './CharComponent/CharComponent';
 
 class App extends Component {
 
   state = {
-    persons: [
-      {
-        id: 1,
-        name: 'Max',
-        age: 28
-      },
-      {
-        id: 2,
-        name: 'Manu',
-        age: 29
-      },
-      {
-        id: 3,
-        name: 'Stephanie',
-        age: 26
-      }
-    ],
-    otherState: 'someOtherValue',
-    showPersons: true
+    word: ''
   };
 
-  deletePersonHandler = (name) => this.setState((prevState, props) => ({
-    persons: prevState.persons.filter((person) => person.name !== name)
-  }));
+  onChange = (e) => {
 
-  namedChangedHandler = (e, id) => {
+    const word = e.target.value;
 
-    const newName = e.target.value;
+    this.setState(() => ({
+      word
+    }));
 
-    const personIndex = this.state.persons.findIndex((person) => person.id === id);
-    const person = { ...this.state.persons[personIndex] };
-
-    person.name = newName;
-
-    const persons = [...this.state.persons];
-    persons[personIndex] = person;
-
-    this.setState((prevState, props) => ({ persons }));
-    
   };
 
-  togglePersonsHandler = () => this.setState((prevState, props) => ({ showPersons: !prevState.showPersons }))
+  deleteChar = (index) => this.setState((prevState, props) => {
+
+    const wordArr = prevState.word.split('');
+    wordArr.splice(index, 1);
+
+    const word = wordArr.join('');
+
+    return { word };
+
+  });
 
   render() {
 
-    const style = {
-      backgroundColor: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    };
-
-    let persons = null;
-    
-    if (this.state.showPersons) {
-
-      persons = (
-        <div>
-
-          {
-            this.state.persons.map(
-              ({ name, age, id }) => 
-                <Person
-                  key={ id }
-                  name={ name }
-                  age={ age }
-                  click={ () => this.deletePersonHandler(name) }
-                  changed={ (e) => this.namedChangedHandler(e, id) }
-                />
-            )
-          }
-
-        </div>
-      );
-
-    }
-
     return (
 
-      <div className="App">
+      <div>
 
-        <button 
-          style={ style }
-          onClick={ this.togglePersonsHandler }
-        >
-          Toggle view
-        </button>
+        <input 
+          type="text"
+          onChange={ this.onChange }
+          value={ this.state.word }
+        />
 
-        { persons }
+        <ValidationComponent length={ this.state.word.length } />
+
+        {
+          [...this.state.word].map((char, index) => <CharComponent key={ index } char={ char } onClick={ () => this.deleteChar(index) } />)
+        }
 
       </div>
 
