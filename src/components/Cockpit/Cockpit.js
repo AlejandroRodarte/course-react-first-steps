@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import classes from './Cockpit.module.css';
 
 const Cockpit = ({ length, showPersons, click, title }) => {
+
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect');
+    });
 
     const paragraphCssClasses = [];
 
