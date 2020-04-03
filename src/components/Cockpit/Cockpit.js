@@ -5,8 +5,14 @@ import classes from './Cockpit.module.css';
 const Cockpit = ({ length, showPersons, click, title }) => {
 
     useEffect(() => {
+        
         console.log('[Cockpit.js] useEffect');
-    });
+
+        setTimeout(() => {
+            alert('Saved data to the cloud');
+        }, 1000);
+
+    }, [length]);
 
     const paragraphCssClasses = [];
 
