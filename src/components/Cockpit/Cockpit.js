@@ -8,12 +8,13 @@ const Cockpit = ({ length, showPersons, click, title }) => {
         
         console.log('[Cockpit.js] useEffect');
 
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             alert('Saved data to the cloud');
         }, 1000);
 
         return () => {
             console.log('[Cockpit.js] cleanup work in useEffect');
+            clearTimeout(timeout);
         };
 
     }, []);
