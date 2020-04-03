@@ -4,6 +4,8 @@ import classes from './Person.module.css';
 
 const Person = ({ name, age, children, click, changed }) => {
 
+    console.log('[Person.js] render');
+
     return (
         <div className={ classes.Person }>
 
